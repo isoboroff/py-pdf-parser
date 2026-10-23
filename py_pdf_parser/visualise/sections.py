@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING, Dict, List, Optional, Tuple, Union
 
 import pyvoronoi
-from matplotlib import cm
+import matplotlib as mpl
 from shapely import geometry, ops
 
 if TYPE_CHECKING:
@@ -58,7 +58,7 @@ class SectionVisualiser:
         self.document = document
         self.__ax = ax
 
-        colour_map = cm.get_cmap("Dark2").colors
+        colour_map = mpl.colormaps["Dark2"].colors
         self.__colour_mapping = {
             section.unique_name: colour_map[idx % len(colour_map)]
             for idx, section in enumerate(self.document.sectioning.sections)
